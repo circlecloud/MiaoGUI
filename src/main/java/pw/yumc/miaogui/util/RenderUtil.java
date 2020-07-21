@@ -148,12 +148,10 @@ public class RenderUtil {
             // 右中
             drawTexturedModalRect(x + rect + width, y + rect + i, rectMiddle, rect, rect, middle);
         }
-        GlStateManager.pushMatrix();
-        GlStateManager.enableBlend();
-        GlStateManager.scale(100, 100, 100);
-        //        drawTexturedModalRect(x + rect, y + rect, rect, rect, width, height);
-        Gui.drawModalRectWithCustomSizedTexture(0, 0, 3, 3, 1, 1, width, height);
-        GlStateManager.disableBlend();
-        GlStateManager.popMatrix();
+        double ratio = 100;
+        GlStateManager.scale(ratio, ratio, ratio);
+        Gui.drawModalRectWithCustomSizedTexture(x/ratio, y/ratio, 3, 3, 1, 1, width, height);
+        double r = Math.pow(ratio,-1);
+        GlStateManager.scale(r,r,r);
     }
 }
