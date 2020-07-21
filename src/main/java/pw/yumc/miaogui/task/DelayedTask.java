@@ -1,0 +1,30 @@
+package pw.yumc.miaogui.task;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+
+/**
+ * @author MiaoWoo
+ */
+public class DelayedTask {
+    private int counter;
+    private Runnable run;
+
+    public DelayedTask(Runnable run, int ticks) {
+        this.counter = ticks;
+        this.run = run;
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onTick(TickEvent.ClientTickEvent event) {
+        if (event.phase != Phase.START) { return; }
+        if (counter <= 0) {
+            MinecraftForge.EVENT_BUS.unregister(this);
+            run.run();
+        }
+        counter--;
+    }
+}

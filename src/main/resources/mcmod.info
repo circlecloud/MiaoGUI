@@ -1,0 +1,14 @@
+[{
+  "modid": "miaogui",
+  "name": "MiaoGUI",
+  "description": "Miao Minecraft GUI.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MiaoWoo"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}]
